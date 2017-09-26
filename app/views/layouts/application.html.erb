@@ -8,15 +8,72 @@
 <head>
   <title>Seerch | Find what you want</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jquery' 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
   <script src="https://use.fontawesome.com/cc2f89fd42.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
 </head>
 <body>
 
 <%= yield %>
 
+
+<script>
+  $( function() {
+    var availableTags = [
+      "Used Goods",
+      "Restaurants",
+      "Delivery",
+      "Home Services",
+      "Aparrels & accessories",
+      "Automobiles",
+      "Beauty and Health",
+      "Books and learning",
+      "Business and Industrial",
+      "Computer and Peripherals",
+      "Consumer Electronics",
+      "Events and Happenings",
+      "Home, Furnishing and Appliances",
+      "Mobile and accessories",
+      "Music Instruments",
+      "Pets and Pets Care",
+      "Real Estate",
+      "Services",
+      "Sports and Fitness",
+      "Toys & Video games",
+      "Travel and Tour Packages",
+      "Others"
+    ];
+    
+    $( "#findtext" ).autocomplete({
+      source: availableTags
+    });
+    
+  } );
+  
+  
+   $( function() {
+    var availableTags = [
+      "Kathmandu",
+      "Bhaktapur",
+      "Lalitpur",
+      "Pokhara"
+    ];
+    $( "#findlocate" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  
+  $(".button").click(function(){
+    var search = $("#findtext").val();
+    var location = $('#findlocate').val();
+    alert("You Selected "+ search +" near " + location);
+    
+  });
+  </script>
 </body>
 </html>
